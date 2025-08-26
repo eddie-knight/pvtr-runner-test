@@ -1,0 +1,22 @@
+name: Run My CLI
+on:
+  workflow_dispatch:
+
+jobs:
+  run-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run My CLI Action
+        id: run-cli
+        uses: your-org/my-cli-action@v1
+        with:
+          cli-arguments: "--foo bar --output-format json"
+
+      - name: Upload CLI artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cli-output
+          path: ${{ steps.run-cli.outputs.cli-output-path }}
