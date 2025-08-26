@@ -1,6 +1,18 @@
+# see https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#concurrency
+# concurrency:
+#   group: "${{ github.workflow }}-${{ github.ref }}"
+#   cancel-in-progress: true
+
 name: Run My CLI
 on:
   workflow_dispatch:
+
+# see https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions:
+  # `read` is required for repository access
+  contents: read
+  # `write` is required to be able to use OIDC workflows
+  # id-token: write
 
 jobs:
   run-cli:
