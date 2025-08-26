@@ -11,12 +11,6 @@ jobs:
 
       - name: Run My CLI Action
         id: run-cli
-        uses: your-org/my-cli-action@v1
+        uses: revanite-io/pvtr-runner@main # TODO: pin this
         with:
           cli-arguments: "--foo bar --output-format json"
-
-      - name: Upload CLI artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: cli-output
-          path: ${{ steps.run-cli.outputs.cli-output-path }}
