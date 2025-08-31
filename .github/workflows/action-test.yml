@@ -3,7 +3,7 @@
 #   group: "${{ github.workflow }}-${{ github.ref }}"
 #   cancel-in-progress: true
 
-name: Run My CLI
+name: Run Baseline Scanner
 on:
   workflow_dispatch:
 
@@ -25,4 +25,5 @@ jobs:
         id: run-cli
         uses: revanite-io/pvtr-runner@main # TODO: pin this
         with:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: privateerproj
+          REPO_NAME: privateer
