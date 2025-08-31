@@ -25,4 +25,4 @@ jobs:
         id: run-cli
         uses: revanite-io/pvtr-runner@main # TODO: pin this
         with:
-          cli-arguments: "--foo bar --output-format json"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
