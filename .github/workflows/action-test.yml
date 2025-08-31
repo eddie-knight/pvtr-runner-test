@@ -7,16 +7,10 @@ name: Run Baseline Scanner
 on:
   workflow_dispatch:
 
-# see https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
-permissions:
-  # `read` is required for repository access
-  contents: read
-  # `write` is required to be able to use OIDC workflows
-  # id-token: write
-
 jobs:
   run-cli:
     runs-on: ubuntu-latest
+    permissions: read-all
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
