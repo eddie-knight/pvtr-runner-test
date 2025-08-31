@@ -8,15 +8,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-cli:
+  baseline:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Run My CLI Action
-        id: run-cli
+      - name: Baseline Scanner
         uses: revanite-io/pvtr-runner@main # TODO: pin this
         with:
           REPO_OWNER: privateerproj
