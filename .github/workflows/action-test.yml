@@ -10,7 +10,7 @@ on:
 jobs:
   run-cli:
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions: write-all
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
