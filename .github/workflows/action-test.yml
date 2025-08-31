@@ -27,3 +27,4 @@ jobs:
         with:
           REPO_OWNER: privateerproj
           REPO_NAME: privateer
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
