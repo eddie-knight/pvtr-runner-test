@@ -23,6 +23,7 @@ jobs:
           private-key: ${{ secrets.OSPS_SCANNER_APP_PRIVATE_KEY }}
 
       - name: Baseline Scanner
+        id: scan
         uses: revanite-io/pvtr-runner@main # TODO: pin this
         with:
           REPO_OWNER: eddie-knight
