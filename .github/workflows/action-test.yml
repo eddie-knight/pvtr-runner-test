@@ -25,6 +25,6 @@ jobs:
       - name: Baseline Scanner
         uses: revanite-io/pvtr-runner@main # TODO: pin this
         with:
-          REPO_OWNER: privateerproj
-          REPO_NAME: privateer
+          REPO_OWNER: eddie-knight
+          REPO_NAME: pvtr-runner-test
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
