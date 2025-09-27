@@ -30,9 +30,8 @@ jobs:
           REPO_NAME: pvtr-runner-test
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
 
-      - name: Upload evaluation results
-        uses: actions/upload-artifact@v4
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          name: evaluation_results
-          path: ${{ steps.scan.outputs.results_dir }}
-          if-no-files-found: warn
+          sarif_file: ${{ steps.scan.outputs.sarif_file }}
+          category: OSPS Baseline
