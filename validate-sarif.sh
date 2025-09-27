@@ -18,6 +18,12 @@ if [ ! -f "$SARIF_FILE" ]; then
     exit 1
 fi
 
+# Ensure jq is available
+if ! command -v jq >/dev/null 2>&1; then
+    echo "Error: jq is required but not installed"
+    exit 1
+fi
+
 echo "Validating SARIF file: $SARIF_FILE"
 
 # Check if the file is valid JSON
@@ -49,7 +55,11 @@ if [ "$RUNS_COUNT" -eq 0 ]; then
     }]' "$SARIF_FILE" > "$FIXED_SARIF_FILE"
     
     echo "Fixed SARIF file created: $FIXED_SARIF_FILE"
-    echo "sarif_file=$FIXED_SARIF_FILE" >> "$GITHUB_OUTPUT"
+    if [ -n "$GITHUB_OUTPUT" ]; then
+        echo "sarif_file=$FIXED_SARIF_FILE" >> "$GITHUB_OUTPUT"
+    else
+        echo "sarif_file=$FIXED_SARIF_FILE"
+    fi
     exit 0
 fi
 
@@ -67,4 +77,8 @@ done
 
 # If we get here, the SARIF appears valid for GitHub
 echo "SARIF file appears valid for GitHub CodeQL upload"
-echo "sarif_file=$SARIF_FILE" >> "$GITHUB_OUTPUT"
+if [ -n "$GITHUB_OUTPUT" ]; then
+    echo "sarif_file=$SARIF_FILE" >> "$GITHUB_OUTPUT"
+else
+    echo "sarif_file=$SARIF_FILE"
+fi
