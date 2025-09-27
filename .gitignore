@@ -1,0 +1,8 @@
+# Temporary SARIF files
+*-fixed.sarif
+
+# Evaluation results directory
+evaluation_results/
+
+# Temporary test files
+/tmp/test-*
